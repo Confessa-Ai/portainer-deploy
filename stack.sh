@@ -1,16 +1,16 @@
 #!/bin/bash
-URL_STACKS=$API_URL_STACKS
-URL=$API_URL
-API_KEY=$API_KEY
-STACK_NAME=$STACK_NAME
-CONTAINER_NAME=$CONTAINER_NAME
-FILE_PATH=$FILE_PATH
-ENDPOINT=$ENDPOINT
-api_docker=$api_docker
+URL_STACKS=https://portainer.confessaai.com.br/api/stacks
+URL=https://portainer.confessaai.com.br/api/endpoints/2
+API_KEY=ptr_Tj0M++bM4NmYxQiAx/6ycAe/aq691iYQGMXx/Kkd6RY=
+STACK_NAME=confessai_backend
+CONTAINER_NAME=confessai_backend-api-1
+FILE_PATH="./stack-portainer.yml"
+ENDPOINT=2
+api_docker=https://portainer.confessaai.com.br/api/endpoints/2/docker
 MANIPULA_CONTAINER=$api_docker/containers
 GET_IMAGE_SHA=$api_docker/images/json
 DELETE_IMAGE=$api_docker/images
-tags=$tags
+tags=guiinfo3333/confessai_backend:latest
 
 echo "printando variaveis"
 echo $URL_STACKS
@@ -27,8 +27,10 @@ echo $GET_IMAGE_SHA
 echo "finalizando print variaveis"
 
 
-response=$(curl -k -X GET "$URL_STACKS" -H "X-API-Key: $API_KEY" --insecure)
+VARIAVEL="curl -k -X GET "$URL_STACKS" -H "X-API-Key: $API_KEY" --insecure" 
+response=$($VARIAVEL)
   echo "*******************************"
+  echo $VARIAVEL
   echo "fim da chamada do response"
   echo "*******************************"
 response_get_sha=$(curl -k -X GET "$GET_IMAGE_SHA" -H "X-API-Key: $API_KEY" --insecure)
