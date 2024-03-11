@@ -12,6 +12,21 @@ GET_IMAGE_SHA=$api_docker/images/json
 DELETE_IMAGE=$api_docker/images
 tags=$tags
 
+echo "printando variaveis"
+echo $URL_STACKS
+echo $URL
+echo $API_KEY
+echo $STACK_NAME
+echo $CONTAINER_NAME
+echo $FILE_PATH
+echo $ENDPOINT
+echo $api_docker
+echo $MANIPULA_CONTAINER
+echo $MANIPULA_CONTAINER
+echo $GET_IMAGE_SHA
+echo "finalizando print variaveis"
+
+
 response=$(curl -k -X GET "$URL_STACKS" -H "X-API-Key: $API_KEY" --insecure)
   echo "*******************************"
   echo "fim da chamada do response"
