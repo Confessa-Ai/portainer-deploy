@@ -29,7 +29,7 @@ GitHub Action for deploying to Portainer.
           STACK_NAME: portalclient
           ENDPOINT: 2
           CONTAINER_NAME: portalclient   
-          tags: "fixpay/portal-cliente:latest"
+          tags: "aeee/erer-r:latest"
           api_docker: ${{ secrets.api_docker }}
 ```
 ## Features
