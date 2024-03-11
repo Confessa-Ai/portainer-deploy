@@ -1,4 +1,5 @@
 #!/bin/bash
+URL_STACKS=$API_URL_STACKS
 URL=$API_URL
 API_KEY=$API_KEY
 STACK_NAME=$STACK_NAME
@@ -11,7 +12,7 @@ GET_IMAGE_SHA=$api_docker/images/json
 DELETE_IMAGE=$api_docker/images
 tags=$tags
 
-response=$(curl -k -X GET "$URL" -H "X-API-Key: $API_KEY" --insecure)
+response=$(curl -k -X GET "$URL_STACKS" -H "X-API-Key: $API_KEY" --insecure)
   echo "*******************************"
   echo "fim da chamada do response"
   echo "*******************************"
@@ -36,7 +37,7 @@ response_get_sha=$(curl -k -X GET "$GET_IMAGE_SHA" -H "X-API-Key: $API_KEY" --in
 # Obtém o ID da stack
   id=$(echo "$response" | jq -r '.[] | select(.Name == "'"$STACK_NAME"'") | .Id')
 # Monta a URL para a exclusão
-  DELETE_URL="$URL/$id"
+  DELETE_URL="$URL_STACKS/$id"
    echo "id da stack" $id
   # Extrai o valor do campo "Name" usando jq
   name=$(echo "$response" | jq -r '.[] | select(.Name == "'"$STACK_NAME"'") | .Name')
@@ -75,7 +76,7 @@ if echo "$response" | jq -e '.[] | select(.Name == "'"$STACK_NAME"'")' > /dev/nu
     echo "=========================================="
     echo "CRIANDO A STACK $name"
     echo "=========================================="
-    response=$(curl -X POST "$URL" \
+    response=$(curl -X POST "$URL_STACKS" \
     -H "X-API-Key: $API_KEY" \
     -F "type=2" \
     -F "method=file" \
@@ -117,7 +118,7 @@ if echo "$response" | jq -e '.[] | select(.Name == "'"$STACK_NAME"'")' > /dev/nu
     echo "============================"
     echo "CRIANDO A STACK $name"
     echo "============================"
-    response=$(curl -X POST "$URL" \
+    response=$(curl -X POST "$URL_STACKS" \
     -H "X-API-Key: $API_KEY" \
     -F "type=2" \
     -F "method=file" \
@@ -138,7 +139,7 @@ else
 
   echo "CRIANDO A NOVA STACK"
   echo "===================="
-  response=$(curl -X POST "$URL" \
+  response=$(curl -X POST "$URL_STACKS" \
   -H "X-API-Key: $API_KEY" \
   -F "type=2" \
   -F "method=file" \
