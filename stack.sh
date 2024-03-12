@@ -1,16 +1,16 @@
 #!/bin/bash
-URL_STACKS=$API_URL_STACKS
-URL=$API_URL
-API_KEY=$API_KEY
-STACK_NAME=$STACK_NAME
-CONTAINER_NAME=$CONTAINER_NAME
-FILE_PATH=$FILE_PATH
-ENDPOINT=$ENDPOINT
-api_docker=$api_docker
-MANIPULA_CONTAINER=$api_docker/containers
-GET_IMAGE_SHA=$api_docker/images/json
-DELETE_IMAGE=$api_docker/images
-tags=$tags
+URL_STACKS="$API_URL_STACKS"
+URL="$API_URL"
+API_KEY="$API_KEY"
+STACK_NAME="$STACK_NAME"
+CONTAINER_NAME="$CONTAINER_NAME"
+FILE_PATH="$FILE_PATH"
+ENDPOINT="$ENDPOINT"
+api_docker="$api_docker"
+MANIPULA_CONTAINER="$api_docker/containers"
+GET_IMAGE_SHA="$api_docker/images/json"
+DELETE_IMAGE="$api_docker/images"
+tags="$tags"
 
 echo "printando variaveis"
 echo $URL_STACKS
